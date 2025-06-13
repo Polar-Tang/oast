@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
   // Handle POST/PUT requests with body
   if (req.method === 'POST' || req.method === 'PUT') {
     let body = '';
-    
+    res.setHeader("Access-Control-Allow-Origin", "*")
     req.on('data', chunk => {
       body += chunk.toString();
     });
@@ -39,6 +39,7 @@ const server = http.createServer((req, res) => {
     });
   } else {
     console.log('========================\n');
+    res.setHeader("Access-Control-Allow-Origin", "*")
     
     // Send response for GET and other methods
     res.writeHead(200, { 'Content-Type': 'application/json' });
